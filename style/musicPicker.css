@@ -1,0 +1,289 @@
+#musicPickerContainer {
+    font-family: "Red Hat Display", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    display: none;
+    opacity: 0;
+
+    transition: 1s;
+}
+
+#pickerBg {
+    width: 100%;
+    height: 100%;
+    
+    background: linear-gradient(30deg, rgb(118, 185, 189), rgb(75, 156, 160), rgb(160, 121, 204));
+
+    position: absolute;
+    z-index: -1;
+}
+
+#pickerListBox {
+    width: 60vw;
+    height: 100vh;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+
+    position: relative;
+    top: 49%;
+    left: 67%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+#pickerTitle {
+    width: fit-content;
+
+    color: white;
+    font-size: 3.5vw;
+    margin-bottom: 3vw;
+
+    position: relative;
+    top: 5%;
+    left: 65%;
+}
+
+#pickerTitle::after {
+    content: '';
+    
+    width: 130%;
+    height: .2vw;
+
+    border-radius: 2vw;
+    background: white;
+
+    position: absolute;
+    top: 100%;
+    left: -30%;
+}
+
+#pickerList {
+    width: 65vw;
+    height: 83%;
+
+    padding: 2vw;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.8vw;
+
+    position: relative;
+    top: -8%;
+    left: 15%;
+
+    filter: drop-shadow(.3vw .3vw .4vw rgba(0, 0, 0, 0.295));
+
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-color: transparent transparent;
+}
+
+#pickerList .listedMusicBox {
+    width: 100%;
+
+    padding: .5vw 6vw 0 2vw;
+
+    color: white;
+    font-size: 2vw;
+    text-align: right;
+    text-shadow: .2vw .2vw .1vw rgb(130, 139, 189);
+
+    text-align: center;
+
+    border-radius: 1vw;
+    background: linear-gradient(30deg, rgb(89, 63, 122), rgb(143, 37, 120));
+
+    position: relative;
+    left: 110%;
+
+    filter: drop-shadow(.2vw .2vw .2vw rgba(173, 27, 151, 0.664));
+
+    transition: .2s;
+
+    animation: musicListSlideIn;
+    animation-fill-mode: forwards;
+    animation-duration: 2s;
+}
+
+.listedMusic {
+    position: relative;
+    top: -.2vw;
+}
+
+#pickerList .listedMusic2 {
+    animation-delay: .1s;
+}
+
+#pickerList .listedMusic3 {
+    animation-delay: .2s;
+}
+
+#pickerList .listedMusic4 {
+    animation-delay: .3s;
+}
+
+#pickerList .listedMusic5 {
+    animation-delay: .4s;
+}
+
+#pickerList .listedMusic6 {
+    animation-delay: .5s;
+}
+
+@keyframes musicListSlideIn {
+    40% {
+        left: 110%;
+    }
+    100% {
+        left: 0%;
+    }
+}
+
+#pickerList .listedMusicBox:hover {
+    scale: 1.05;
+    margin-right: 2.5vw;
+}
+
+#musicTemplateContainer {
+    width: 60vw;
+    height: 60vw;
+
+    border: .2vw solid rgba(255, 255, 255, 0.767);
+    border-radius: 50%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+
+    opacity: 0;
+    box-shadow: 0 0 25vw 5vw rgb(255, 255, 255);
+    overflow: hidden;
+    transition: .3s;
+}
+
+#musicTemplateContainer::after {
+    content: '';
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    box-shadow: inset 0 0 2vw 1vw rgb(255, 255, 255);
+}
+
+#templateBg {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+    filter: brightness(.9) blur(.15vw);
+}
+
+#musicTemplateContainer img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    filter: brightness(.6) blur(.05vw);
+}
+
+#templateTxtBox {
+    height: 60%;
+
+    color: white;
+    font-size: 2vw;
+    text-shadow: .1vw .1vw .2vw rgba(0, 0, 0, 0.692);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+
+    position: relative;
+    z-index: 2;
+}
+
+#musicName {
+    font-size: 4vw;
+    text-shadow: .2vw .2vw .2vw rgba(86, 171, 228, 0.767);
+
+    filter: drop-shadow(0 0 1vw rgba(255, 255, 255, 0.733));
+}
+
+#artistName {
+    font-size: 1.8vw;
+
+    opacity: .5;
+}
+
+#diffRating {
+    margin-top: 3vw;
+
+    color: rgb(233, 90, 65);
+    font-size: 2.8vw;
+
+    filter: drop-shadow(.1vw .1vw .3vw rgba(0, 0, 0, 0.849));
+}
+
+#templateTime {
+    color: rgb(226, 196, 97);
+}
+
+#roundStart {
+    width: 22vw;
+    height: 5vw;
+
+    color: white;
+    font-size: 2.5vw;
+    text-shadow: .1vw .1vw .3vw rgba(19, 19, 19, 0.829);
+
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+    margin-top: 1vw;
+    border: none;
+    border-radius: .5vw;
+    outline: .4vw outset rgb(197, 197, 197);
+    background: linear-gradient(30deg, rgb(49, 49, 49), rgb(94, 94, 94));
+
+    position: relative;
+
+    filter: drop-shadow(0 0 .4vw rgba(0, 0, 0, 0.774));
+    transition: .2s;
+}
+
+#roundStart:hover {
+    outline: .3vw solid white;
+    scale: 1.1;
+
+    filter: drop-shadow(0 0 1vw white);
+}
+
+#roundStart:focus {
+    outline: .3vw solid white;
+    scale: 1.1;
+}

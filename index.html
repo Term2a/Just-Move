@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./style/main.css">
+    <link rel="stylesheet" href="./style/mainMenu.css">
+    <link rel="stylesheet" href="./style/game.css">
+    <link rel="stylesheet" href="./style/musicPicker.css">
+    <link rel="stylesheet" href="./style/musicList.css">
+    <link rel="stylesheet" href="./style/optionsMenu.css">
+
+    <script src="./script/cursorHandler.js" defer></script>
+    <script src="./script/optionsMenu.js" defer></script>
+    <script src="./script/bgHandler.js" defer></script>
+    <script src="./script/songPicker.js" defer></script>
+    <script src="./script/game.js" defer></script>
+    <script src="./script/screenSwapper.js" defer></script>
+    <script src="./script/sync.js" defer></script>
+    <script src="./script/audioHandler.js" defer></script>
+
+    <title>Just Move</title>
+</head>
+<body>
+    <div id="mainBg">
+        <div id="mainBgBlobs">
+            <div class="blob blob1"></div>
+            <div class="blob blob2"></div>
+            <div class="blob blob3"></div>
+            <div class="blob blob4"></div>
+            <div class="blob blob5"></div>
+        </div>
+    </div>
+    <div id="main">
+        <div id="cursorContainer">
+            <img src="./assets/Cursor/modern_white.2.png" id="cursor">
+        </div>
+        <div id="loadingContainer">
+            <div id="loadingBg">
+                <h1 id="loadingTitle">
+                    loading<span class="loadingDot loadingDot1">.</span><span class="loadingDot loadingDot2">.</span><span class="loadingDot loadingDot3">.</span>
+                </h1>
+                <div id="loadingBar"></div>
+            </div>
+        </div>
+        <section id="mainMenuContainer">
+            <div id="optionsMenu">
+                <div id="mainTitleBox">
+                    <h1 id="mainTitle">
+                        JUST MOVE
+                    </h1>
+                </div>
+                <div id="options">
+                    <h2 id="goToGame">
+                        DANCE FLOOR
+                    </h2>
+                    <h2 id="goToMusicList">
+                        MUSIC LIST
+                    </h2>
+                    <h2 id="goToLeaderboards">
+                        LEADERBOARDS
+                    </h2>
+                    <h2 id="goToOptions">
+                        OPTIONS
+                    </h2>
+                    <h2 id="goToSupportUs">
+                        SUPPORT US
+                    </h2>
+                </div>
+            </div>
+        </section>
+        <section id="optionsMenuContainer">
+            <h1>
+                OPTIONS MENU
+            </h1>
+            <div id="optionsBox">
+                <div class="optionSlider">
+                    <h2 class="sliderTitle">
+                        Game Music Volume
+                    </h2>
+                    <div class="slider">
+                        <div class="sliderThumb"></div>
+                    </div>
+                </div>
+                <div class="optionSlider">
+                    <h2 class="sliderTitle">
+                        Menu SFX Volume
+                    </h2>
+                    <div class="slider">
+                        <div class="sliderThumb"></div>
+                    </div>
+                </div>
+                <div class="optionSlider">
+                    <h2 class="sliderTitle">
+                        Slider Title
+                    </h2>
+                    <div class="slider">
+                        <div class="sliderThumb"></div>
+                    </div>
+                </div>
+                <div class="optionSlider">
+                    <h2 class="sliderTitle">
+                        Slider Title
+                    </h2>
+                    <div class="slider">
+                        <div class="sliderThumb"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="musicPickerContainer">
+            <div id="pickerBg"></div>
+            <h1 id="pickerTitle">
+                PICK YOUR MUSIC
+            </h1>
+            <div id="pickerListBox">
+                <div id="pickerList">
+                    <div class="listedMusicBox listedMusic1">
+                        <h1 class="listedMusic" data-music-id="1" onclick="templateSwap(1)">
+                            Haywyre - LET ME HEAR THAT
+                        </h1>
+                    </div>
+                    <div class="listedMusicBox listedMusic2">
+                        <h1 class="listedMusic" data-music-id="2" onclick="templateSwap(2)">
+                            Porter Robinson - SAD MACHINE
+                        </h1>
+                    </div>
+                    <div class="listedMusicBox listedMusic3">
+                        <h1 class="listedMusic" data-music-id="3" onclick="templateSwap(3)">
+                            Haywyre - INSIGHT
+                        </h1>
+                    </div>
+                    <div class="listedMusicBox listedMusic4">
+                        <h1 class="listedMusic" data-music-id="4" onclick="templateSwap(4)">
+                            Darude - SANDSTORM
+                        </h1>
+                    </div>
+                    <div class="listedMusicBox listedMusic5">
+                        <h1 class="listedMusic" data-music-id="5" onclick="templateSwap(5)">
+                            artist - MUSIC TEMPLATE 5
+                        </h1>
+                    </div>
+                    <div class="listedMusicBox listedMusic6">
+                        <h1 class="listedMusic" data-music-id="6" onclick="templateSwap(6)">
+                            artist - MUSIC TEMPLATE 6
+                        </h1>
+                    </div>
+                    <div class="listedMusicBox listedMusic6">
+                        <h1 class="listedMusic" data-music-id="7" onclick="templateSwap(7)">
+                            artist - MUSIC TEMPLATE 7
+                        </h1>
+                    </div>
+                    <div class="listedMusicBox listedMusic6">
+                        <h1 class="listedMusic" data-music-id="8" onclick="templateSwap(8)">
+                            artist - MUSIC TEMPLATE 8
+                        </h1>
+                    </div>
+                    <div class="listedMusicBox listedMusic6">
+                        <h1 class="listedMusic" data-music-id="9" onclick="templateSwap(9)">
+                            artist - MUSIC TEMPLATE 9
+                        </h1>
+                    </div>
+                    <div class="listedMusicBox listedMusic6">
+                        <h1 class="listedMusic" data-music-id="10" onclick="templateSwap(10)">
+                            artist - MUSIC TEMPLATE 10
+                        </h1>
+                    </div>
+                    <div class="listedMusicBox listedMusic6">
+                        <h1 class="listedMusic" data-music-id="11" onclick="templateSwap(11)">
+                            artist - MUSIC TEMPLATE 11
+                        </h1>
+                    </div>
+                    <div class="listedMusicBox listedMusic6">
+                        <h1 class="listedMusic" data-music-id="12" onclick="templateSwap(12)">
+                            artist - MUSIC TEMPLATE 12
+                        </h1>
+                    </div>
+                </div>
+            </div>
+            <div id="musicTemplateContainer">
+                <div id="templateBg">
+                    <img id="templateImg" alt="Image cover related to the selected music">
+                </div>
+                <div id="templateTxtBox">
+                    <div id="templateInfo">
+                        <h1 id="musicName">
+                            MUSIC NAME
+                        </h1>
+                        <h4 id="artistName">
+                            Artist Name
+                        </h4>
+                        <div id="diffRating">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-half"></ion-icon>
+                            <ion-icon name="star-outline"></ion-icon>
+                            <ion-icon name="star-outline"></ion-icon>
+                        </div>
+                        <h3 id="templateTime">
+                            [ 00:00 ]
+                        </h3>
+                    </div>
+                    <div id="gameInfo">
+                        <input id="roundStart" type="button" value="DANCE">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="gameContainer">
+            <h1 id="countDown"></h1>
+            <div id="template">
+                <ion-icon 
+                    class="arrow arrowUp" 
+                    data-key="w" 
+                    data-arrow="ArrowUp"
+                    name="arrow-up-outline"
+                ></ion-icon>
+                <ion-icon 
+                    class="arrow arrowRight" 
+                    data-key="d" 
+                    data-arrow="ArrowRight"
+                    name="arrow-forward-outline"
+                ></ion-icon>
+                <ion-icon 
+                    class="arrow arrowLeft" 
+                    data-key="a" 
+                    data-arrow="ArrowLeft"
+                    name="arrow-back-outline"
+                ></ion-icon>
+                <ion-icon 
+                    class="arrow arrowDown" 
+                    data-key="s"
+                    data-arrow="ArrowDown"
+                    name="arrow-down-outline"
+                ></ion-icon>
+            </div>
+            <div id="scoreContainer">
+                <div id="currentScore">
+                    <h1 class="scoreFrame1" style="font-size: 1.4vw">
+                        SCORE
+                    </h1>
+                    <h1 id="scoreDisplay" class="scoreFrame2" style="font-style: italic">
+                        0
+                    </h1>
+                </div>
+                <div id="highscore">
+                    <h1 class="scoreFrame3" style="font-size: 1.1vw">
+                        HIGHSCORE
+                    </h1>
+                    <h1 id="highscoreDisplay" class="scoreFrame4" style="font-style: italic">
+                        0
+                    </h1>
+                </div>
+            </div>
+            <div id="alertBox">
+                <h1 id="alert"></h1>
+            </div>
+            <div id="directionContainer"></div>
+            <div id="gameMusicContainer">
+                <div id="gameMusicImgBox">
+                    <img id="gameMusicImg" src="./assets/music.template/template.1.jpg">
+                </div>
+                <div id="gameMusicNameBox">
+                    <h3>
+                        MUSIC NAME
+                    </h3>
+                    <h6>
+                        Artist Name
+                    </h6>
+                </div>
+                <div id="gameMusicTimer">
+                    timer
+                </div>
+            </div>
+        </section>
+        <section id="musicListContainer">
+            <h1 id="musicListTitle">
+                MUSIC LIST
+            </h1>
+            <div id="musicListInfo">
+                <h3>
+                    8 Entries
+                </h3>
+                <h3>
+                    0 PLAYED
+                </h3>
+                <h3>
+                    0 FINISHED
+                </h3>
+                <h3>
+                    0 TP
+                </h3>
+            </div>
+            <div id="musicList">
+                <div id="listContainer">
+                    <div class="musicListEntry entry1" data-entry-id="1">
+                        <div class="listEntryTxt">
+                            <div class="listEntryTitle">
+                                <h2>
+                                    Let Me Hear That
+                                </h2>
+                                <h5 style="opacity: .7;">
+                                    Haywyre
+                                </h5>
+                            </div>
+                            <div>
+                                <h4>
+                                    Times Played
+                                </h4>
+                                <h1>
+                                    0
+                                </h1>
+                            </div>
+                            <div>
+                                <h4>
+                                    Times Finished
+                                </h4>
+                                <h1>
+                                    0
+                                </h1>
+                            </div>
+                            <div>
+                                <h4>
+                                    Total Points
+                                </h4>
+                                <h1>
+                                    000
+                                </h1>
+                            </div>
+                        </div>
+                        <img class="listEntryImg listEntryImg1" src="./assets/music.template/template.1.jpg">
+                    </div>
+                    <div class="musicListEntry entry2" data-entry-id="2">
+                        <div class="listEntryTxt">
+                            <div class="listEntryTitle">
+                                <h2>
+                                    Sad Machine
+                                </h2>
+                                <h5 style="opacity: .7;">
+                                    Porter Robinson
+                                </h5>
+                            </div>
+                            <div>
+                                <h4>
+                                    Times Played
+                                </h4>
+                                <h1>
+                                    0
+                                </h1>
+                            </div>
+                            <div>
+                                <h4>
+                                    Times Finished
+                                </h4>
+                                <h1>
+                                    0
+                                </h1>
+                            </div>
+                            <div>
+                                <h4>
+                                    Total Points
+                                </h4>
+                                <h1>
+                                    000
+                                </h1>
+                            </div>
+                        </div>
+                        <img class="listEntryImg listEntryImg2" src="./assets/music.template/template.2.jpg">
+                    </div>
+                    <div class="musicListEntry entry3" data-entry-id="3">
+                        <div class="listEntryTxt">
+                            <div class="listEntryTitle">
+                                <h2>
+                                    Insight
+                                </h2>
+                                <h5 style="opacity: .7;">
+                                    Haywyre
+                                </h5>
+                            </div>
+                            <div>
+                                <h4>
+                                    Times Played
+                                </h4>
+                                <h1>
+                                    0
+                                </h1>
+                            </div>
+                            <div>
+                                <h4>
+                                    Times Finished
+                                </h4>
+                                <h1>
+                                    0
+                                </h1>
+                            </div>
+                            <div>
+                                <h4>
+                                    Total Points
+                                </h4>
+                                <h1>
+                                    000
+                                </h1>
+                            </div>
+                        </div>
+                        <img class="listEntryImg listEntryImg3" src="./assets/music.template/template.3.jpg">
+                    </div>
+                    <div class="musicListEntry entry4" data-entry-id="4">
+                        <div class="listEntryTxt">
+                            <div class="listEntryTitle">
+                                <h2>
+                                    Sandstorm
+                                </h2>
+                                <h5 style="opacity: .7;">
+                                    Darude
+                                </h5>
+                            </div>
+                            <div>
+                                <h4>
+                                    Times Played
+                                </h4>
+                                <h1>
+                                    0
+                                </h1>
+                            </div>
+                            <div>
+                                <h4>
+                                    Times Finished
+                                </h4>
+                                <h1>
+                                    0
+                                </h1>
+                            </div>
+                            <div>
+                                <h4>
+                                    Total Points
+                                </h4>
+                                <h1>
+                                    000
+                                </h1>
+                            </div>
+                        </div>
+                        <img class="listEntryImg listEntryImg4" src="./assets/music.template/template.4.jpg">
+                    </div>
+                    <div class="musicListEntry entry5" data-entry-id="5">
+                        <div class="listEntryTxt">
+                            <div class="listEntryTitle">
+                                <h2>
+                                    MUSIC NAME 5
+                                </h2>
+                                <h5 style="opacity: .7;">
+                                    Artist Name
+                                </h5>
+                            </div>
+                            <div>
+                                <h4>
+                                    Times Played
+                                </h4>
+                                <h1>
+                                    0
+                                </h1>
+                            </div>
+                            <div>
+                                <h4>
+                                    Times Finished
+                                </h4>
+                                <h1>
+                                    0
+                                </h1>
+                            </div>
+                            <div>
+                                <h4>
+                                    Total Points
+                                </h4>
+                                <h1>
+                                    000
+                                </h1>
+                            </div>
+                        </div>
+                        <img class="listEntryImg listEntryImg4" src="./assets/music.template/template.5.jpg">
+                    </div>
+                    <div class="musicListEntry entry6" data-entry-id="6">
+                        <div class="listEntryTxt">
+                            <div class="listEntryTitle">
+                                <h2>
+                                    MUSIC NAME 6
+                                </h2>
+                                <h5 style="opacity: .7;">
+                                    Artist Name
+                                </h5>
+                            </div>
+                            <div>
+                                <h4>
+                                    Times Played
+                                </h4>
+                                <h1>
+                                    0
+                                </h1>
+                            </div>
+                            <div>
+                                <h4>
+                                    Times Finished
+                                </h4>
+                                <h1>
+                                    0
+                                </h1>
+                            </div>
+                            <div>
+                                <h4>
+                                    Total Points
+                                </h4>
+                                <h1>
+                                    000
+                                </h1>
+                            </div>
+                        </div>
+                        <img class="listEntryImg listEntryImg4" src="./assets/music.template/template.6.jpg">
+                    </div>
+                    <div class="musicListEntry entry7" data-entry-id="7">
+                        <div class="listEntryTxt">
+                            <div class="listEntryTitle">
+                                <h2>
+                                    MUSIC NAME 7
+                                </h2>
+                                <h5 style="opacity: .7;">
+                                    Artist Name
+                                </h5>
+                            </div>
+                            <div>
+                                <h4>
+                                    Times Played
+                                </h4>
+                                <h1>
+                                    0
+                                </h1>
+                            </div>
+                            <div>
+                                <h4>
+                                    Times Finished
+                                </h4>
+                                <h1>
+                                    0
+                                </h1>
+                            </div>
+                            <div>
+                                <h4>
+                                    Total Points
+                                </h4>
+                                <h1>
+                                    000
+                                </h1>
+                            </div>
+                        </div>
+                        <img class="listEntryImg listEntryImg4" src="./assets/music.template/template.6.jpg">
+                    </div>
+                    <div class="musicListEntry entry9" data-entry-id="9">
+                        <div class="listEntryTxt">
+                            <div class="listEntryTitle">
+                                <h2>
+                                    MUSIC NAME 8
+                                </h2>
+                                <h5 style="opacity: .7;">
+                                    Artist Name
+                                </h5>
+                            </div>
+                            <div>
+                                <h4>
+                                    Times Played
+                                </h4>
+                                <h1>
+                                    0
+                                </h1>
+                            </div>
+                            <div>
+                                <h4>
+                                    Times Finished
+                                </h4>
+                                <h1>
+                                    0
+                                </h1>
+                            </div>
+                            <div>
+                                <h4>
+                                    Total Points
+                                </h4>
+                                <h1>
+                                    000
+                                </h1>
+                            </div>
+                        </div>
+                        <img class="listEntryImg listEntryImg4" src="./assets/music.template/template.6.jpg">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    </div>
+</body>
+</html>

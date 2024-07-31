@@ -1,0 +1,60 @@
+#mainMenuContainer {
+    padding: 5vw 5vw;
+
+    position: relative;
+    left: 0;
+
+    transition: .8s;
+}
+
+#optionsMenu {
+    height: 100%;
+
+    font-size: 2vw;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: left;
+}
+
+#mainTitle {
+    font-size: 6vw;
+    background: linear-gradient(20deg,rgb(0, 140, 255), rgb(39, 206, 136));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    -webkit-text-stroke: .1vw rgba(255, 255, 255, 0.603);
+    font-family: "Rubik Mono One", monospace;
+    font-weight: 400;
+    font-style: normal;
+
+    filter: drop-shadow(.2vw .2vw .1vw rgba(255, 255, 255, 0.705));
+}
+
+#options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    gap: 1.5vw;
+}
+
+#mainTitleBox {
+    filter: drop-shadow(.2vw .2vw .1vw rgba(0, 0, 0, 0.705));
+}
+
+#optionsMenu h2 {
+    width: fit-content;
+
+    color: rgb(242, 251, 255);
+    filter: drop-shadow(.1vw .1vw .2vw rgba(0, 0, 0, 0.514));
+    
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    transition: .2s;
+}

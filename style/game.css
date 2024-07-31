@@ -1,0 +1,257 @@
+#countDown {
+    color: white;
+    font-size: 10vw;
+    text-shadow: .2vw .2vw .2vw rgba(11, 51, 110, 0.829);
+
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+    display: none;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+
+    opacity: 0;
+    filter: drop-shadow(0 0 1vw rgba(134, 230, 209, 0.87));
+
+    transition: .5s;
+}
+
+#template {
+    display: none;
+
+    position: absolute;
+    z-index: 5;
+}
+
+#template * {
+    opacity: 1;
+}
+
+#gameContainer {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+
+    transition: .5s;
+}
+
+
+/*  SCOREBOARD  */
+#scoreContainer {
+    color: white;
+    font-size: 2.4vw;
+    text-shadow: .1vw .1vw .2vw rgb(50, 70, 241);
+
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2vw;
+
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+}
+
+#scoreContainer div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#highscore {
+    font-size: 1.8vw;
+}
+
+#currentScore, #highscore {
+    position: relative;
+}
+
+#currentScore::after, #highscore::after {
+    content: '';
+
+    width: 8vw;
+    height: .15vw;
+
+    border-radius: 2vw;
+    background: white;
+
+    position: absolute;
+    top: 25%;
+    left: 0;
+}
+
+.scoreFrame1, .scoreFrame2, .scoreFrame3, .scoreFrame4 {
+    opacity: 0;
+    
+    position: relative;
+    left: -100%;
+
+    animation: scoreSlideIn 1s;
+    animation-fill-mode: forwards;
+}
+
+.scoreFrame2 {
+    animation-delay: .2s;
+}
+
+.scoreFrame3 {
+    animation-delay: .4s;
+}
+
+.scoreFrame4 {
+    animation-delay: .6s;
+}
+
+@keyframes scoreSlideIn {
+    100% {
+        opacity: 1;
+        left: 0;
+    }
+}
+
+
+/*  MUSIC INFO  */
+#gameMusicContainer {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: 50%;
+    left: 82%;
+    transform: translate(-50%, -50%);
+}
+
+#gameMusicImgBox {
+    width: 15vw;
+    height: 8vw;
+
+    margin-bottom: 1vw;
+    border: .2vw solid white;
+    border-radius: 2vw;
+
+    overflow: hidden;
+}
+
+#gameMusicImg {
+    width: 100%;
+}
+
+#gameMusicNameBox {
+    color: white;
+    font-size: 1.8vw;
+    text-shadow: .1vw .1vw .2vw rgba(0, 0, 0, 0.603);
+
+    margin-bottom: 10vw;
+}
+
+
+/*  MAIN  */
+#directionContainer {
+    width: 30%;
+    height: 90%;
+
+    border-radius: 2vw;
+    background: linear-gradient(transparent, rgb(187, 199, 80) 10%, rgb(66, 171, 185) 90%, transparent);
+
+    position: relative;
+
+    filter: drop-shadow(0 0 .5vw rgba(0, 0, 0, 0.425));
+    overflow: hidden;
+}
+
+#directionContainer::after {
+    content: '';
+
+    width: 100%;
+    height: .2vw;
+    
+    background: linear-gradient(90deg, rgb(218, 218, 218), white);
+    opacity: .3;
+
+    position: relative;
+    top: 17%;
+    left: 0;
+    display: block;
+
+}
+
+#alertBox h1 {
+    font-size: 1.5vw;
+    color: rgb(43, 192, 160);
+    text-shadow: .1vw .1vw .1vw rgb(250, 141, 183);
+
+    font-family: "Bungee", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+
+    filter: drop-shadow(0 0 .2vw white);
+
+    opacity: 0;
+    transition: .15s;
+    pointer-events: none;
+    user-select: none;
+}
+
+.arrow {
+    font-size: 5vw;
+
+    position: absolute;
+    top: -10%;
+    transform: translate(-50%, -50%);
+
+    transition: .2s;
+    opacity: .3;
+
+    filter: drop-shadow(0 0 .1vw white);
+}
+
+.arrowUp {
+    left: 20%;
+    color: rgb(73, 110, 212)
+}
+
+.arrowLeft {
+    left: 40%;
+    color: rgb(197, 101, 176);
+}
+
+.arrowRight {
+    left: 60%;
+    color: rgb(57, 167, 93);
+}
+
+.arrowDown {
+    left: 80%;
+    color: rgb(192, 178, 56);
+}
+
+.arrowUp2 {
+    top: -25%;
+}

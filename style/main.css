@@ -1,0 +1,294 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    user-select: none;
+    cursor: none;
+}
+
+body {
+    overflow: hidden;
+}
+
+section {
+    width: 100vw;
+    height: 100vh;
+
+    position: absolute;
+}
+
+#a {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+    font-family: "Red Hat Display", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+
+/*  CURSOR  */
+#cursorContainer {
+    width: 100vw;
+    height: 100vh;
+
+    position: absolute;
+    z-index: 10;
+
+    pointer-events: none;
+}
+
+#cursor {
+    width: 2vw;
+    margin-top: .6vw;
+    margin-left: .65vw;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    filter: drop-shadow(.25vw .15vw .2vw rgba(2, 10, 22, 0.486));
+}
+
+
+
+/*  BACKGROUND  */
+#mainBg {
+    width: 100%;
+    height: 100%;
+
+    background: radial-gradient(rgb(86, 179, 156), rgb(66, 151, 221), rgb(100, 121, 214));
+    background-size: 5vw 5vw;
+
+    position: absolute;
+    z-index: -2;
+
+    filter: blur(.5vw);
+    scale: 1.1;
+
+    transition: .3s;
+}
+
+#mainBgBlobs {
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+    z-index: -1;
+
+    filter: blur(2vw);
+    opacity: .8;
+}
+
+.blob {
+    width: 30vw;
+    height: 20vw;
+
+    border-radius: 50%;
+    background: linear-gradient(rgba(211, 160, 184, 0.719), transparent);
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.blob1 {
+    top: 90%;
+    left: 10%;
+}
+
+.blob2 {
+    top: 105%;
+    left: 25%;
+}
+
+.blob3 {
+    top: 70%;
+    left: 99%;
+}
+
+.blob4 {
+    top: 0%;
+    left: 35%;
+}
+
+.blob5 {
+    top: 5%;
+    left: 50%;
+}
+
+
+
+/*  LOADING SCREEN  */
+#loadingContainer {
+    width: 100vw;
+    height: 100vh;
+
+    position: absolute;
+    z-index: 100;
+
+    opacity: 0;
+    display: none;
+    
+    transition: 1.5s;
+}
+
+#loadingBg {
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(black, rgb(29, 29, 29));
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5vw;
+}
+
+#loadingTitle {
+    color: rgb(85, 175, 218);
+    font-size: 2vw;
+    text-shadow: 0 0 1vw rgba(91, 158, 221, 0.651);
+
+    font-family: "Red Hat Display", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    display: none;
+    gap: .1vw;
+
+    opacity: 0;
+    filter: drop-shadow(.1vw .1vw .1vw rgb(184, 214, 243));
+
+    transition: 1s;
+}
+
+.loadingDot{
+    animation: loadingDots;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+}
+
+.loadingDot2 {
+    animation-delay: .15s;
+}
+
+.loadingDot3 {
+    animation-delay: .3s;
+}
+
+@keyframes loadingDots {
+    40% {
+        opacity: 1;
+    }
+    41% {
+        opacity: 0;
+    }
+    79% {
+        opacity: 0;
+    }
+    80% {
+        opacity: 1;
+    }    
+}
+
+#loadingBar {
+    width: 30vw;
+    height: 4%;
+
+    border: .1vw solid rgb(108, 133, 214);
+
+    display: none;
+    position: relative;
+
+    opacity: 0;
+    transition: 1s;
+}
+
+#loadingBar::after {
+    content: '';
+
+    width: 98%;
+    height: 70%;
+
+    background: linear-gradient(30deg, rgb(119, 231, 213), rgb(53, 156, 139), rgb(64, 165, 212));
+
+    position: absolute;
+    top: 15%;
+    left: 1%;
+
+    animation: loadingBar 7s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes loadingBar {
+    0% {
+        width: 1%;
+    }
+    4% {
+        width: 1%;
+    }
+    5% {
+        width: 7%;
+    }
+    7% {
+        width: 8%;
+    }
+    8% {
+        width: 11%;
+    }
+    15% {
+        width: 19%;
+    }
+    20% {
+        width: 25%;
+    }
+    23% {
+        width: 27%;
+    }
+    34% {
+        width: 29%;
+    }
+    35% {
+        width: 35%;
+    }
+    59% {
+        width: 42%;
+    }
+    60% {
+        width: 55%;
+    }
+    68% { 
+        width: 56%;
+    }
+    69% {
+        width: 66%;
+    }
+    75% {
+        width: 75%;
+    }
+    80% {
+        width: 85%;
+    }
+    90% {
+        width: 90%;
+    }
+    95% {
+        width: 92%;
+    }
+    98% {
+        width: 95%;
+    }
+    100% {
+        width: 98%;
+    }
+}
