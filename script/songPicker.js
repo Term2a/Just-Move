@@ -11,7 +11,9 @@ let gameMusicTitle = document.getElementById('gameMusicNameBox').querySelectorAl
 let gameMusicArtist = document.getElementById('gameMusicNameBox').querySelectorAll('h6')[0];
 let roundStart = document.getElementById('roundStart');
 let musicSyncId;
+let gameMusic;
 
+//  Safe for template animation double trigger
 let currentSelect = '';
 listed.forEach((el) => {
     el.addEventListener('click', () => {
@@ -21,8 +23,7 @@ listed.forEach((el) => {
 
 templateContainer.style.opacity = 0;
 
-let musicUnsync;
-
+//  Updates the info and visuals of the music template on user selection
 function templateSwap(music) {
     setTimeout(() => {
         templateContainer.style.transition = '.15s';
@@ -42,6 +43,8 @@ function templateSwap(music) {
                 gameMusicTitle.innerHTML = 'Let Me Hear That';
                 gameMusicArtist.innerHTML = 'Haywyre';
 
+                gameMusic = new Audio('./assets/Music.List/Haywyre - Let Me Hear That.mp3');
+
                 break
             case 2:
                 musicName.innerHTML = 'Sad Machine';
@@ -51,8 +54,7 @@ function templateSwap(music) {
                 gameMusicTitle.innerHTML = 'Sad Machine';
                 gameMusicArtist.innerHTML = 'Porter Robinson';
 
-                musicUnsync = new Audio('./assets/Music.List/Porter Robinson - Sad Machine.mp3');
-                musicUnsync.volume = .7;
+                gameMusic = new Audio('./assets/Music.List/Porter Robinson - Sad Machine.mp3');
                 
                 break
             case 3:
@@ -63,8 +65,7 @@ function templateSwap(music) {
                 gameMusicTitle.innerHTML = 'Insight';
                 gameMusicArtist.innerHTML = 'Haywyre';
 
-                musicUnsync = new Audio('./assets/Music.List/Haywyre - Insight.mp3');
-                musicUnsync.volume = .7;
+                gameMusic = new Audio('./assets/Music.List/Haywyre - Insight.mp3');
                 
                 break
             case 4:
@@ -75,8 +76,7 @@ function templateSwap(music) {
                 gameMusicTitle.innerHTML = 'Sandstorm';
                 gameMusicArtist.innerHTML = 'Darude';
 
-                musicUnsync = new Audio('./assets/Music.List/Darude - Sandstorm.mp3');
-                musicUnsync.volume = .7;
+                gameMusic = new Audio('./assets/Music.List/Darude - Sandstorm.mp3');
                 
                 break
             case 5:
@@ -118,10 +118,43 @@ function templateSwap(music) {
         }
 
         setTimeout(() => {
-            templateImg.setAttribute('src', `./assets/music.template/template.${music}.jpg`);
+            templateImg.setAttribute('src', `./assets/music.template/music.${music}.cover.jpg`);
             templateContainer.style.opacity = 1;
 
+            //  Prepares the music info to be used by the game screen
+            document.getElementById('gameMusicImg').setAttribute('src', `./assets/music.template/music.${music}.cover.jpg`);
             musicSyncId = templateImg.getAttribute('src').split('.')[3];
         }, 150);
+
+        //  Pre-sets the game timer based on selected music
+        gameMusic.addEventListener('loadedmetadata', () => {
+            setTimer(gameMusic);
+        })
     }
+}
+
+//  Updates the countdown timer based on music's current time
+function setTimer(music) {
+    let timer = document.getElementById('timerClock');
+
+    updateTimer();
+    function updateTimer() {
+        let duration = parseInt(music.duration),
+            currentTime = parseInt(music.currentTime),
+
+            timeLeft = duration - currentTime,
+            seconds, minutes;
+
+        seconds = timeLeft % 60;
+        minutes = Math.floor( timeLeft / 60 ) % 60;
+
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+
+        timer.innerHTML = minutes + ':' + seconds;
+    }
+    
+    music.addEventListener('timeupdate', () => {
+        updateTimer();
+    })
 }

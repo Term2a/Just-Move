@@ -33,12 +33,10 @@
 }
 
 #gameContainer {
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    opacity: 0;
 
     transition: .5s;
 }
@@ -137,7 +135,7 @@
     align-items: center;
 
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 82%;
     transform: translate(-50%, -50%);
 }
@@ -146,15 +144,37 @@
     width: 15vw;
     height: 8vw;
 
+    margin-top: 5vw;
     margin-bottom: 1vw;
-    border: .2vw solid white;
+    border: .22vw solid rgba(255, 255, 255, 0.568);
     border-radius: 2vw;
 
+    position: absolute;
+    top: -50%;
+
+    opacity: 0;
+    filter: drop-shadow(0 0 .5vw rgba(48, 45, 87, 0.527));
     overflow: hidden;
+
+    animation: imgSlideUp 1.5s;
+    animation-fill-mode: forwards;
+    animation-delay: .7s;
+}
+
+@keyframes imgSlideUp {
+    60% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        margin-top: 0;
+    }
 }
 
 #gameMusicImg {
     width: 100%;
+
+    filter: brightness(.95);
 }
 
 #gameMusicNameBox {
@@ -163,37 +183,170 @@
     text-shadow: .1vw .1vw .2vw rgba(0, 0, 0, 0.603);
 
     margin-bottom: 10vw;
+
+    position: relative;
+    left: 100%;
+    
+    opacity: 0;
+
+    animation: infoSlideIn 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes infoSlideIn {
+    100% {
+        opacity: 1;
+        left: 0;
+    }
+}
+
+#gameMusicNameBox h6 {
+    color: rgb(223, 223, 223);
+    opacity: .8;
+}
+
+#gameMusicTimer {
+    position: relative;
+
+    opacity: 0;
+    
+    animation: timerFade 1s;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+}
+
+@keyframes timerFade {
+    100% {
+        opacity: 1;
+    }
+}
+
+#timerBound {
+    width: 18vw;
+    height: 2vw;
+
+    position: relative;
+    z-index: 1;
+}
+
+#timerBound::after {
+    content: '';
+
+    width: 100%;
+    height: 10%;
+
+    border-radius: 10%;
+    background: linear-gradient(90deg, transparent, white, white, white, transparent);
+
+    position: absolute;
+    top: 140%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    filter: drop-shadow(0 0 .3vw rgba(16, 10, 71, 0.459));
+}
+
+#timerThumb {
+    color: rgb(79, 226, 226);
+    font-size: 2vw;
+
+    position: absolute;
+    z-index: 2;
+
+    transform: rotate(180deg);
+
+    filter: drop-shadow(.1vw .1vw .2vw rgba(32, 84, 151, 0.404));
+}
+
+#thumbOutline {
+    color: rgb(192, 243, 232);
+
+    position: absolute;
+    left: 0;
+}
+
+#timerClock {    
+    width: 50%;
+
+    color: white;
+    font-size: 3vw;
+    text-shadow: .1vw .1vw .2vw rgba(30, 80, 173, 0.836);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: 420%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    opacity: 0;
+
+    animation: clockSlideIn 1.5s;
+    animation-fill-mode: forwards;
+    animation-delay: .7s;
+}
+
+@keyframes clockSlideIn {
+    100% {
+        opacity: .9;
+        top: 280%;
+    }
 }
 
 
 /*  MAIN  */
-#directionContainer {
+#boundingBg {
+    width: 30%;
+    height: 90%;
+    
+    border-radius: 2vw;
+    background: linear-gradient(transparent, rgb(187, 199, 80) 10%, rgb(66, 171, 185) 90%, transparent);
+
+    position: absolute;
+
+    filter: drop-shadow(0 0 .5vw rgba(0, 0, 0, 0.425));
+    opacity: 0;
+
+    transition: 1s;
+}
+
+#arrowsBoundingBox {
     width: 30%;
     height: 90%;
 
     border-radius: 2vw;
-    background: linear-gradient(transparent, rgb(187, 199, 80) 10%, rgb(66, 171, 185) 90%, transparent);
 
     position: relative;
+    z-index: 2;
 
-    filter: drop-shadow(0 0 .5vw rgba(0, 0, 0, 0.425));
     overflow: hidden;
+
+    filter: drop-shadow(.1vw .1vw .1vw rgba(93, 139, 226, 0.493));
 }
 
-#directionContainer::after {
-    content: '';
+#arrowThreshold {
+    width: 30%;
 
-    width: 100%;
-    height: .2vw;
-    
-    background: linear-gradient(90deg, rgb(218, 218, 218), white);
-    opacity: .3;
+    color: rgb(49, 49, 49);
+    font-size: 5vw;
 
-    position: relative;
-    top: 17%;
-    left: 0;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3.5%;
 
+    position: absolute;
+    top: 70.05%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+
+    opacity: 0;
+    filter: drop-shadow(0 .1vw .1vw rgba(0, 0, 0, 0.932));
+
+    transition: 1s;
 }
 
 #alertBox h1 {
@@ -206,7 +359,7 @@
     font-style: normal;
 
     position: absolute;
-    top: 50%;
+    top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
@@ -223,35 +376,52 @@
     font-size: 5vw;
 
     position: absolute;
-    top: -10%;
+    top: 0;
     transform: translate(-50%, -50%);
+    z-index: 2;
 
-    transition: .2s;
-    opacity: .3;
+    opacity: 0;
 
     filter: drop-shadow(0 0 .1vw white);
+
+    animation: arrowFadeIn .8s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes arrowFadeIn {
+    30% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes arrowFadeOut {
+    30% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }
 
 .arrowUp {
-    left: 20%;
-    color: rgb(73, 110, 212)
+    left: 40%;
+    color: rgb(73, 110, 212);
 }
 
 .arrowLeft {
-    left: 40%;
+    left: 20%;
     color: rgb(197, 101, 176);
 }
 
 .arrowRight {
-    left: 60%;
+    left: 80%;
     color: rgb(57, 167, 93);
 }
 
 .arrowDown {
-    left: 80%;
+    left: 60%;
     color: rgb(192, 178, 56);
-}
-
-.arrowUp2 {
-    top: -25%;
 }

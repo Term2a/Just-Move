@@ -77,9 +77,9 @@ mainMenuOptions.forEach((option) => {
 
 //  Return to Main Menu from other menus on ESC press
 function mainMenuReturn(page) {
-    let menuReturn = new Audio('../assets/SFX/menu.return.wav');
+    let menuReturn = new Audio('../assets/SFX/menu.return.mp3');
 
-    document.body.addEventListener('keydown', (evt) => {
+    let returnTrigger = (evt) => {
         if (evt.key == 'Escape') {
             menuReturn.play();
 
@@ -97,8 +97,11 @@ function mainMenuReturn(page) {
             setTimeout(() => {
                 mainMenuScreen.style.left = 0;
             }, 1020);
+            document.body.removeEventListener('keydown', returnTrigger);
         }
-    })
+    };
+
+    document.body.addEventListener('keydown', returnTrigger);
 }
 
 
@@ -118,6 +121,8 @@ let countDown = document.getElementById('countDown');
 let isSynced = false;
 
 startGame.addEventListener('click', () => {
+    gameMusic.volume = .7;
+
     if (musicSyncId == 1) {
         isSynced = true;
         syncCheck();
@@ -161,6 +166,8 @@ startGame.addEventListener('click', () => {
 
         setTimeout(() => {
             gameScreen.style.opacity = 1;
+            document.getElementById('boundingBg').style.opacity = 1;
+            document.getElementById('arrowThreshold').style.opacity = .3;
         }, 100);
     }, 10400);
 

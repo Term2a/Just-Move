@@ -1,4 +1,4 @@
-let container = document.getElementById('directionContainer');
+let container = document.getElementById('arrowsBoundingBox');
 let scoreDisplay = document.getElementById('scoreDisplay');
 
 initScore = 0;
@@ -32,19 +32,12 @@ function rngFix(min, max) {
     return random
 }
 
-function pauseGame(flag, interval) {
-    if (flag) {
-        clearInterval(interval);
-    } else {
-        setInterval(interval);
-    }
-}
-
+//  Calls all functions that run the game, loops display of arrows based on gameSpeed and gameRate
 function gameStart()  {
     createArrow();
-    addScore(65, 45, 28, 20);
+    addScore();
 
-    musicUnsync.play();
+    gameMusic.play();
 
     setInterval(() => {
         createArrow();
@@ -62,7 +55,6 @@ function createArrow(num = rngFix(0, 3)) {
 
     let initPos = -10;
     arrowMove(newArrow, initPos);
-
     arrowHit();
 }
 
@@ -73,18 +65,27 @@ function arrowMove(el, init) {
 
         let elPos = el.style.top.split('%')[0];
         
-        if (elPos >= 19) {
+        if (elPos >= 75) {
             el.style.opacity = 1;
+            el.style.animation = 'arrowFadeOut .5s';
         }
-        if (elPos >= 93) {
-            el.style.opacity = 0;
-        }
-        if (elPos >= 110) {
+        if (elPos >= 100) {
             el.remove();
         }
     }, 50 / gameSpeed);
 }
 
+//  Checks if the user inputs the right key to catch the arrow
+function isRightInput(el, evt) {
+    if (
+        (el != null || el != undefined) &&
+        (evt.key == el.dataset.key || evt.key == el.dataset.arrow)
+    ) {
+        return true
+    }
+}
+
+//  Catches the arrow if the input is correct
 function arrowHit() {
     let trgArrow = container.firstChild;
     setInterval(() => {
@@ -92,28 +93,22 @@ function arrowHit() {
     });
 
     document.addEventListener('keydown', (evt) => {
-        if (
-            (evt.key == trgArrow.dataset.key || evt.key == trgArrow.dataset.arrow) && 
-            trgArrow.style.top.split('%')[0] > 19
-        ) {
+        if ( isRightInput(trgArrow, evt) ) {
             trgArrow.remove();
         }
     })
 }
 
-//  Updates the scoreboard if hit or miss
+//  Updates the scoreboard on hit or miss
 let trgArrow;
 setInterval(() => {
     trgArrow = container.firstChild;        
 });
 
-function addScore(height1, height2, height3, height4) {
+function addScore() {
     document.addEventListener('keydown', (evt) => {
-        if (
-            (evt.key == trgArrow.dataset.key || evt.key == trgArrow.dataset.arrow) && 
-            trgArrow.style.top.split('%')[0] > 19
-        ) {
-            arrowScore(trgArrow, height1, height2, height3, height4);        
+        if ( isRightInput(trgArrow, evt) ) {
+            arrowScore(trgArrow);        
 
         } else {
             scoreAlert('missed');
@@ -125,39 +120,45 @@ function addScore(height1, height2, height3, height4) {
     })
 }
 
-//  Different score values depending on how early you get the hit
-function arrowScore(el, height1, height2, height3, height4) {
-    let arrowHeight = el.style.top.split('%')[0];
-    if (arrowHeight >= height1) {
-        updateScore(1);
-
-        scoreAlert('late');
-
-    } else
-    if (arrowHeight >= height2) {
-        updateScore(2);
-
-        scoreAlert('ok');
-
-    } else
-    if (arrowHeight >= height3) {
-        updateScore(3);
-
-        scoreAlert('good');
-
-    } else
-    if (arrowHeight >= height4) {
-        updateScore(5);
-
-        scoreAlert('perfect');
-    }
-}
-
+//  Different score values for arrow position on catch
 function updateScore(num) {
     initScore += num;
     scoreDisplay.innerHTML = initScore;
 }
 
+function arrowScore(el) {
+    let arrowHeight = el.style.top.split('%')[0];
+    if (arrowHeight <= 54) {
+        updateScore(1);
+
+        scoreAlert('early');
+
+    }
+    if (arrowHeight >= 55 && arrowHeight <= 59) {
+        updateScore(2);
+
+        scoreAlert('ok');
+
+    }
+    if (arrowHeight >= 60 && arrowHeight <= 68) {
+        updateScore(3);
+
+        scoreAlert('good');
+
+    }
+    if (arrowHeight >= 69 && arrowHeight <= 78) {
+        updateScore(5);
+
+        scoreAlert('perfect');
+    }
+    if (arrowHeight >= 79) {
+        updateScore(1);
+
+        scoreAlert('late');
+    }
+}
+
+//  Displays a rating to the user's timing on catch
 function scoreAlert(txt) {
     let alertDisplay = document.getElementById('alert');
 
@@ -167,7 +168,7 @@ function scoreAlert(txt) {
         alertDisplay.style.color = 'rgb(241, 24, 42)';
         alertDisplay.style.textShadow = '.1vw .1vw .1vw rgb(250, 141, 183)';
     }
-    if (txt == 'late') {
+    if (txt == 'late' || txt == 'early') {
         alertDisplay.style.color = 'rgb(248, 80, 60)';
         alertDisplay.style.textShadow = '.1vw .1vw .1vw rgb(172, 82, 214)';
     } 

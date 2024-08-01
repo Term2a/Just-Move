@@ -1,5 +1,5 @@
-let beats = 545;
-let micro = 1 / 32;
+let beats = 545,
+    micro = 1 / 32;
 
 function syncCheck() {
     if (isSynced === true) {
@@ -7,25 +7,29 @@ function syncCheck() {
 
             gameSpeed = 3;
 
-            let musicSync = new Audio('./assets/Music.List/Haywyre - Let Me Hear That.mp3');
-            musicSync.volume = .7;
-            musicSync.play();
+            gameMusic.play();
+
+            document.getElementById('timerThumb').style.transition = `${gameMusic.duration * 1.3 + 9}s`;
+            document.getElementById('timerThumb').style.marginLeft = '86%';
 
             setTimeout(() => {
                 musicStart(); 
-                addScore(65, 45, 28, 20);
+                addScore();
                 
-            }, beats * 1.9);
-        }, 15500);
+            }, beats * .8);
+        }, 15600);
     }
 }
 
 function syncArrow(num, multi = 1) {
-    setTimeout(() => {
+    let setArrow =  setTimeout(() => {
         createArrow(num); 
+
+        clearTimeout(setArrow);
     }, beats * 1 * multi);
 }
 
+//  Arrow mapping for (Let Me Hear That - Haywyre)
 function musicStart() {
     // PRE-INTRO
     syncArrow(3, 1)

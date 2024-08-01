@@ -1,6 +1,6 @@
-let menuSelectAudio = new Audio('../assets/SFX/menu.select.wav');
-let gameStartAudio = new Audio('../assets/SFX/game.start.wav');
-let pickerHover = new Audio('../assets/SFX/picker.hover.wav');
+let menuSelectAudio = new Audio('../assets/SFX/menu.select.mp3');
+let gameStartAudio = new Audio('../assets/SFX/game.start.mp3');
+let pickerHover = new Audio('../assets/SFX/picker.hover.mp3');
 
 document.getElementById('options').querySelectorAll('h2').forEach((el) => {
     el.addEventListener('click', () => {
